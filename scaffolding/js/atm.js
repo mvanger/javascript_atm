@@ -15,6 +15,7 @@ window.onload = function(){
 
   document.getElementById("savingsDeposit").onclick = function(event){
     // Any code you put in here will be run when the savingsDeposit button is clicked
+    document.getElementById("savingsBalance").textContent = "$" + (parseInt(document.getElementById("savingsBalance").textContent.slice(1),10) + parseInt(document.getElementById("savingsAmount").value));
   };
 
   document.getElementById("checkingWithdraw").onclick = function(event){
