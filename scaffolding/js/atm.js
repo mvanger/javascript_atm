@@ -20,12 +20,25 @@ window.onload = function(){
 
   document.getElementById("checkingWithdraw").onclick = function(event){
     // Any code you put in here will be run when the checkingWithdraw button is clicked
-    document.getElementById("checkingBalance").textContent = "$" + (parseInt(document.getElementById("checkingBalance").textContent.slice(1),10) - parseInt(document.getElementById("checkingAmount").value));
+    if ((document.getElementById("checkingBalance").textContent.slice(1) - parseInt(document.getElementById("checkingAmount").value)) < 0) {
+    } else {
+      document.getElementById("checkingBalance").textContent = "$" + (parseInt(document.getElementById("checkingBalance").textContent.slice(1),10) - parseInt(document.getElementById("checkingAmount").value));
+    }
   };
 
   document.getElementById("savingsWithdraw").onclick = function(event){
     // Any code you put in here will be run when the savingsWithdraw button is clicked
+    if ((document.getElementById("savingsBalance").textContent.slice(1) - parseInt(document.getElementById("savingsAmount").value)) <0){
+    } else {
+      document.getElementById("savingsBalance").textContent = "$" + (parseInt(document.getElementById("savingsBalance").textContent.slice(1),10) - parseInt(document.getElementById("savingsAmount").value));
+    }
   };
+
+  if (document.getElementById("checkingBalance").textContent === "$0") {
+    document.getElementById("checkingBalance").style.background = "red";
+  } else {
+    document.getElementById("checkingBalance").style.background = "grey";
+  }
 
 };
 
