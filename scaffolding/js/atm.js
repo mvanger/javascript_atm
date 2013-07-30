@@ -8,46 +8,51 @@ window.onload = function(){
   // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onclick
   // The click event is raised when the user clicks on an element.
 
-  document.getElementById("checkingBalance").style.background = "red";
-  document.getElementById("savingsBalance").style.background = "red";
+  var checkingBalance = $("#checkingBalance")[0];
+  var checkingAmount = $("#checkingAmount");
+  var savingsBalance = $("#savingsBalance")[0];
+  var savingsAmount = $("#savingsAmount");
 
-  document.getElementById("checkingDeposit").onclick = function(event){
+  checkingBalance.style.background = "red";
+  savingsBalance.style.background = "red";
+
+  $("#checkingDeposit").click(function(event){
     // Any code you put in here will be run when the checkingDeposit button is clicked
-    document.getElementById("checkingBalance").textContent = "$" + (parseInt(document.getElementById("checkingBalance").textContent.slice(1),10) + parseInt(document.getElementById("checkingAmount").value));
-    if (document.getElementById("checkingBalance").textContent !== "$0") {
-      document.getElementById("checkingBalance").style.background = "#E3E3E3";
+    checkingBalance.textContent = "$" + (parseInt(checkingBalance.textContent.slice(1,10)) + parseInt(checkingAmount.val()));
+    if (checkingBalance.textContent !== "$0") {
+      checkingBalance.style.background = "#E3E3E3";
     }
-  };
+  });
 
-  document.getElementById("savingsDeposit").onclick = function(event){
+  $("#savingsDeposit").click(function(event){
     // Any code you put in here will be run when the savingsDeposit button is clicked
-    document.getElementById("savingsBalance").textContent = "$" + (parseInt(document.getElementById("savingsBalance").textContent.slice(1),10) + parseInt(document.getElementById("savingsAmount").value));
-    if (document.getElementById("savingsBalance").textContent !== "$0") {
-      document.getElementById("savingsBalance").style.background = "#E3E3E3";
+    savingsBalance.textContent = "$" + (parseInt(savingsBalance.textContent.slice(1),10) + parseInt(savingsAmount.val()));
+    if (savingsBalance.textContent !== "$0") {
+      savingsBalance.style.background = "#E3E3E3";
     }
-  };
+  });
 
-  document.getElementById("checkingWithdraw").onclick = function(event){
+  $("#checkingWithdraw").click(function(event){
     // Any code you put in here will be run when the checkingWithdraw button is clicked
-    if ((document.getElementById("checkingBalance").textContent.slice(1) - parseInt(document.getElementById("checkingAmount").value)) < 0) {
+    if ((checkingBalance.textContent.slice(1) - parseInt(checkingAmount.val())) < 0) {
     } else {
-      document.getElementById("checkingBalance").textContent = "$" + (parseInt(document.getElementById("checkingBalance").textContent.slice(1),10) - parseInt(document.getElementById("checkingAmount").value));
+      checkingBalance.textContent = "$" + (parseInt(checkingBalance.textContent.slice(1),10) - parseInt(checkingAmount.val()));
     }
-    if (document.getElementById("checkingBalance").textContent === "$0") {
-      document.getElementById("checkingBalance").style.background = "red";
+    if (checkingBalance.textContent === "$0") {
+      checkingBalance.style.background = "red";
     }
-  };
+  });
 
-  document.getElementById("savingsWithdraw").onclick = function(event){
+  $("#savingsWithdraw").click(function(event){
     // Any code you put in here will be run when the savingsWithdraw button is clicked
-    if ((document.getElementById("savingsBalance").textContent.slice(1) - parseInt(document.getElementById("savingsAmount").value)) <0){
+    if ((savingsBalance.textContent.slice(1) - parseInt(savingsAmount.val())) <0){
     } else {
-      document.getElementById("savingsBalance").textContent = "$" + (parseInt(document.getElementById("savingsBalance").textContent.slice(1),10) - parseInt(document.getElementById("savingsAmount").value));
+      savingsBalance.textContent = "$" + (parseInt(savingsBalance.textContent.slice(1),10) - parseInt(savingsAmount.val()));
     }
-    if (document.getElementById("savingsBalance").textContent === "$0") {
-      document.getElementById("savingsBalance").style.background = "red";
+    if (savingsBalance.textContent === "$0") {
+      savingsBalance.style.background = "red";
     }
-  };
+  });
 
 };
 
